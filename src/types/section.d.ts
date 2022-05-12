@@ -4,6 +4,6 @@ declare type SectionBaseType = {
   subText?: string
 }
 
-declare interface SeviceSectionType extends SectionBaseType {
-  content: { icons: string; title: string; text: string }[]
+declare interface SectionSeviceType extends SectionBaseType {
+  content: { icon: string; title: string; text: string }[]
 }
