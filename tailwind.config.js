@@ -2,8 +2,14 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     fontSize: {
-      xs: [
+      xxs: [
         '14px',
+        {
+          letterSpacing: '-1.2px',
+        },
+      ],
+      xs: [
+        '15px',
         {
           letterSpacing: '-1.2px',
         },
