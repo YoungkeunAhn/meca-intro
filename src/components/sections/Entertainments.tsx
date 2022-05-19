@@ -7,7 +7,7 @@ function Entertainments() {
     <SectionLayout sectionInfo={entertainmentsSectionInfo}>
       <ul className='w-full grid grid-cols-4 gap-2 gap-y-4'>
         {entertainmentsSectionInfo.content.map((data, idx) => (
-          <li key={idx + 1}>
+          <li key={idx + 1} className='relative hover:-top-2 hover:-left-2'>
             <img src={`enter_logo/a${idx + 1}.png`} alt={data} />
             <div className='text-xs font-bold mt-4'>{data}</div>
           </li>
