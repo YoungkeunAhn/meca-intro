@@ -8,14 +8,15 @@ function Portfoilo() {
       <div className='w-full grid grid-cols-4 gap-2'>
         {portfolioSectionInfo.content.map((data, idx) => (
           <div
-            className='relative flex justify-center items-center group'
+            className='relative flex justify-center items-center group w-full h-[222px]'
             key={idx}
+            style={{
+              backgroundImage: `url(${data.thumbnail})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'cetner',
+              backgroundRepeat: 'no-repeat',
+            }}
           >
-            <img
-              src={data.thumbnail}
-              alt='thumbnail'
-              className='w-full h-full'
-            />
             <div
               style={{
                 background: 'rgba(0,0,0,0.7)',

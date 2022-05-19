@@ -17,7 +17,7 @@ function MainSection() {
       <img
         src='logo_white.png'
         alt='메카스테이지'
-        width='110px'
+        width='100px'
         className='object-contain ml-[69px] mt-[46px]'
       />
       <div
