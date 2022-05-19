@@ -3,9 +3,10 @@ import AboutUs from './components/sections/AboutUs'
 import MainSection from './components/sections/MainSection'
 import Portfoilo from './components/sections/Portfoilo'
 import Service from './components/sections/Service'
-import Works from './components/sections/Works'
+import BroadcaterPrograms from './components/sections/BroadcaterPrograms'
 import { contactSectionInfo } from './data/section-info'
 import SectionLayout from './layouts/section-layout/SectionLayout'
+import Entertainments from './components/sections/Entertainments'
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
       <Service />
       <Portfoilo />
       <AboutUs />
-      <Works />
+      <BroadcaterPrograms />
+      <Entertainments />
       <SectionLayout sectionInfo={contactSectionInfo}>
         <div className='bg-[#F5F5F5] rounded-md p-5 space-y-4'>
           <div className='flex items-center justify-start space-x-10'>

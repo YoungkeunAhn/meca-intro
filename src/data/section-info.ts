@@ -160,22 +160,32 @@ export const mecastageSectionInfo: SectionMecastage = {
   ],
 }
 
-export const worksSectionInfo: SectionWork = {
-  title: 'Works',
-  mainText: `메카스테이지와 함께한 <span class="text-2xl text-[#00A1B4] font-bold">고객사들</span>`,
+export const broadcaterProgramsSectionInfo: SectionWork = {
+  title: 'Broadcater & Programs',
+  mainText: `메카스테이지와 함께한 <span class="text-2xl text-[#00A1B4] font-bold">방송사 & 프로그램</span>`,
+  content: [],
+}
+
+export const entertainmentsSectionInfo: SectionWork = {
+  title: 'Entertainments',
+  mainText: `메카스테이지와 함께한 <span class="text-2xl text-[#00A1B4] font-bold">기획사</span>`,
   content: [
-    'ocn.png',
-    'tvn.png',
-    'jtbc.png',
-    'mnet.png',
-    'yg.png',
-    'olive.png',
-    'numokbo.png',
-    'pingpong.png',
-    'sbs.png',
-    'mbc.png',
-    'tv_chosun.png',
-    'kt.png',
+    'YG 엔터테인먼트',
+    'JYP 엔터테인먼트',
+    'SM 엔터테인먼트',
+    '안테나 엔터테인먼트',
+    'WM 엔터테인먼트',
+    'BRAVE 엔터테인먼트',
+    'SARAM 엔터테인먼트',
+    'CJ E&M',
+    'FNC 엔터테인먼트',
+    'BIGHIT 엔터테인먼트',
+    'JELLYFISH 엔터테인먼트',
+    'STARSHIP 엔터테인먼트',
+    'LOEN 엔터테인먼트',
+    'PLEDIS 엔터테인먼트',
+    'STONE 엔터테인먼트',
+    'CUBE 엔터테인먼트',
   ],
 }
 
