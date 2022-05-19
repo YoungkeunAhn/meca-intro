@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { contactSuccessMsg } from '../../data/msg'
 
 const purple = '#54009D'
 const lightPurple = '#A342F8'
@@ -22,7 +23,7 @@ function MainSection() {
   }
 
   const onSubmit = () => {
-    alert('확인 후 빠르게 연락드리도록 하겠습니다.')
+    alert(contactSuccessMsg)
     setInputs(initInputs)
   }
 
