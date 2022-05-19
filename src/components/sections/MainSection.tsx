@@ -1,9 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const purple = '#54009D'
 const lightPurple = '#A342F8'
 
+type InputsType = {
+  name: string
+  phoneNum: string
+}
+
+const initInputs: InputsType = {
+  name: '',
+  phoneNum: '',
+}
+
 function MainSection() {
+  const [inputs, setInputs] = useState<InputsType>(initInputs)
+  const [close, setClose] = useState<boolean>(false)
+
+  const onChangeInputs = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputs({ ...inputs, [event.target.name]: event.target.value })
+  }
+
+  const onSubmit = () => {
+    alert('확인 후 빠르게 연락드리도록 하겠습니다.')
+    setInputs(initInputs)
+  }
+
+  const onToggleClose = () => {
+    setClose(!close)
+  }
+
   return (
     <div
       className='flex flex-col h-screen relative justify-between'
@@ -46,44 +72,75 @@ function MainSection() {
           의 숙련된 전문가들이 만들어드립니다
         </div>
       </div>
-      <div style={{ background: purple }} className='text-white relative py-5'>
+      <div className='flex flex-col items-center'>
         <div
-          style={{ background: purple, transform: 'translateX(-50%)' }}
-          className='rounded-full absolute -top-10 left-[50%] w-[78px] h-[78px] text-center leading-[56px] z-0 cursor-pointer'
+          style={{
+            background: purple,
+            transform: 'translateX(-50%)',
+          }}
+          className={`rounded-t-full w-[78px] h-[40px] text-center leading-[56px] cursor-pointer text-white ${
+            close ? 'bottom-0' : 'bottom-10'
+          }`}
+          onClick={onToggleClose}
         >
-          X 닫기
+          {close ? 'Open' : 'Close'}
         </div>
-        <div className='flex justify-center items-center text-xs'>
-          <div className='flex mr-96'>
-            <img
-              src='main_contact_icon.png'
-              alt='contact icon'
-              width='58px'
-              className='object-contain mr-5'
-            />
-            <div className='flex flex-col leading-8'>
-              <span>성함과 연락처만 간단하게 남겨주시면 담당자가 확인 후</span>
-              <span>빠르게 연락드리도록 하겠습니다.</span>
+        <div
+          style={{
+            background: purple,
+            height: close ? 0 : '100px',
+            transition: '0.5s ease-in-out',
+            overflow: 'hidden',
+          }}
+          className={`text-white w-full relative ${close ? 'py-0' : 'py-5'}`}
+        >
+          <div className='flex justify-center items-center text-xs'>
+            <div className='flex mr-96'>
+              <img
+                src='main_contact_icon.png'
+                alt='contact icon'
+                width='58px'
+                className='object-contain mr-5'
+              />
+              <div className='flex flex-col leading-8'>
+                <span>
+                  성함과 연락처만 간단하게 남겨주시면 담당자가 확인 후
+                </span>
+                <span>빠르게 연락드리도록 하겠습니다.</span>
+              </div>
             </div>
-          </div>
 
-          <div className='flex items-center relative left-[-100px]'>
-            <div className='flex flex-col items-start space-y-3 mr-4'>
-              <div className='flex items-center'>
-                <span className='w-16'>성&nbsp;&nbsp;&nbsp;함 :</span>
-                <input type='text' className='rounded-sm' />
+            <div className='flex items-center relative left-[-100px]'>
+              <div className='flex flex-col items-start space-y-3 mr-4'>
+                <div className='flex items-center'>
+                  <span className='w-16'>성&nbsp;&nbsp;&nbsp;함 :</span>
+                  <input
+                    type='text'
+                    className='rounded-sm text-black'
+                    name='name'
+                    value={inputs.name}
+                    onChange={onChangeInputs}
+                  />
+                </div>
+                <div className='flex items-center'>
+                  <span className='w-16'>연락처 :</span>
+                  <input
+                    type='text'
+                    className='rounded-sm text-black'
+                    name='phoneNum'
+                    value={inputs.phoneNum}
+                    onChange={onChangeInputs}
+                  />
+                </div>
               </div>
-              <div className='flex items-center'>
-                <span className='w-16'>연락처 :</span>
-                <input type='text' className='rounded-sm' />
-              </div>
+              <button
+                style={{ color: purple }}
+                className='rounded-full bg-white text-center w-16 h-16'
+                onClick={onSubmit}
+              >
+                확인
+              </button>
             </div>
-            <button
-              style={{ color: purple }}
-              className={`rounded-full bg-white text-center w-16 h-16`}
-            >
-              확인
-            </button>
           </div>
         </div>
       </div>
