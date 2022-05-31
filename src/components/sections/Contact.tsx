@@ -1,10 +1,14 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import { contactSuccessMsg } from '../../data/msg'
 import { contactSectionInfo } from '../../data/section-info'
+import Check from '../../icons/Check'
 import SectionLayout from '../../layouts/section-layout/SectionLayout'
+import { IsStringNotNull } from '../../validation/IsNullString'
+import TermsModal from '../terms-modal/TermsModal'
 
 type InputsType = {
-  companyName: string
+  company: string
   manager: string
   companyCallNum: string
   phoneNum: string
@@ -13,7 +17,7 @@ type InputsType = {
 }
 
 const initInputs: InputsType = {
-  companyName: '',
+  company: '',
   manager: '',
   companyCallNum: '',
   phoneNum: '',
@@ -21,10 +25,13 @@ const initInputs: InputsType = {
   budget: '',
 }
 
+const formData = new FormData()
+
 function Contact() {
   const [inputs, setInputs] = useState<InputsType>(initInputs)
   const [textareaValue, setTextareaValue] = useState<string>('')
   const [agreeCheck, setAgreeCheck] = useState<boolean>(false)
+  const [open, setOpen] = useState<boolean>(false)
 
   const onChangeInputs = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({ ...inputs, [event.target.name]: event.target.value })
@@ -34,15 +41,64 @@ function Contact() {
     setTextareaValue(event.target.value)
   }
 
+  const onChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      formData.append('image', event.target.files[0])
+    }
+  }
+
   const onToggleAgreeCheck = () => {
     setAgreeCheck(!agreeCheck)
   }
 
-  const onSubmit = () => {
-    alert(contactSuccessMsg)
-    setInputs(initInputs)
-    setTextareaValue('')
-    return false
+  const valiContact = () => {
+    if (
+      IsStringNotNull(inputs.company) &&
+      IsStringNotNull(inputs.companyCallNum) &&
+      IsStringNotNull(inputs.email) &&
+      IsStringNotNull(inputs.phoneNum) &&
+      IsStringNotNull(inputs.manager)
+    ) {
+      if (!agreeCheck) {
+        alert('개인정보처리방침에 동의해주세요.')
+        return false
+      }
+    } else {
+      alert(
+        '회사명, 담당자명, 회사연락처, 휴대폰번호, 이메일은 필수 항목 입니다.'
+      )
+      return false
+    }
+    return true
+  }
+
+  const onSubmit = async () => {
+    try {
+      if (valiContact()) {
+        formData.append('data', JSON.stringify(inputs))
+        const { data } = await axios({
+          method: 'POST',
+          url: 'http://adm.imama.kr/imama/api/',
+          data: formData,
+        })
+        console.log(data)
+        alert(contactSuccessMsg)
+        setInputs(initInputs)
+        setTextareaValue('')
+        setAgreeCheck(false)
+      }
+    } catch (e) {
+      console.error(e)
+      alert('실패')
+    }
+  }
+
+  const openModal = () => {
+    setOpen(true)
+  }
+
+  const closeModal = () => {
+    setOpen(false)
   }
 
   return (
@@ -57,7 +113,7 @@ function Contact() {
               name='companyName'
               className='border-o outline-none rounded-md w-[355px] h-[50px] px-3 hover:bg-[#D1EFF2]'
               onChange={onChangeInputs}
-              value={inputs.companyName}
+              value={inputs.company}
               required
             />
           </div>
@@ -110,6 +166,7 @@ function Contact() {
             </label>
             <input
               name='email'
+              type='email'
               className='border-o outline-none rounded-md w-[355px] h-[50px] px-3 hover:bg-[#D1EFF2]'
               onChange={onChangeInputs}
               value={inputs.email}
@@ -156,6 +213,8 @@ function Contact() {
                   type='file'
                   name='imageFile'
                   className='border-o outline-none rounded-md w-full px-3 text-[13px]'
+                  accept='image/*'
+                  onChange={onChangeFile}
                 />
               </div>
               <div className='text-[15px] -tracking-[0.5px] mt-4'>
@@ -179,20 +238,22 @@ function Contact() {
                 }`}
                 onClick={onToggleAgreeCheck}
               >
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
+                <Check
                   className={`h-5 w-5 rounded-full ${
                     agreeCheck
                       ? 'bg-[#D1EFF2] fill-black'
                       : 'bg-gray-500 fill-white group-hover:fill-[#000]'
                   }`}
-                  viewBox='0 0 20 20'
-                >
-                  <path d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' />
-                </svg>
+                />
+
                 <span className='text-xs font-bold ml-2'>동의함</span>
               </div>
-              <span className='cursor-pointer ml-2 text-xxs'>[내용확인]</span>
+              <span
+                className='cursor-pointer ml-2 text-xxs'
+                onClick={openModal}
+              >
+                [내용확인]
+              </span>
             </div>
           </div>
         </div>
@@ -206,6 +267,7 @@ function Contact() {
           </button>
         </div>
       </div>
+      {open && <TermsModal closeModal={closeModal} />}
     </SectionLayout>
   )
 }
