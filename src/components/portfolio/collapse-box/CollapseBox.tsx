@@ -43,11 +43,9 @@ function CollapseBox(props: Props) {
                     currentCard.images[idx] &&
                     onClickImageItem(currentCard.images[idx])
                   }
-                  className={`w-full h-full ${
-                    mainImage === currentCard.images[idx]
-                      ? 'border-2 border-cyan-300'
-                      : ''
-                  } ${currentCard.images[idx] ? 'cursor-pointer' : ''} 
+                  className={`w-full h-full  ${
+                    currentCard.images[idx] ? 'cursor-pointer' : ''
+                  } 
                 `}
                   style={{
                     backgroundImage: `url(${

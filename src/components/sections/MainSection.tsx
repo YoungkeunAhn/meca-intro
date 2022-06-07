@@ -47,6 +47,7 @@ function MainSection() {
         width='100px'
         className='object-contain ml-[69px] mt-[46px]'
       />
+
       <div
         className='flex flex-col items-center w-full text-white absolute top-[45%] left-[50%]'
         style={{ transform: 'translate(-50%, -50%)' }}
@@ -77,7 +78,6 @@ function MainSection() {
         <div
           style={{
             background: purple,
-            transform: 'translateX(-50%)',
           }}
           className={`rounded-t-full w-[78px] h-[40px] text-center leading-[56px] cursor-pointer text-white ${
             close ? 'bottom-0' : 'bottom-10'
