@@ -1,37 +1,88 @@
-import React from 'react'
-import { portfolioSectionInfo } from '../../data/section-info'
+import React, { useState } from 'react'
+import { portfolioFakeData } from '../../data/section-info'
 import SectionLayout from '../../layouts/section-layout/SectionLayout'
+import CollapseBox from '../portfolio/collapse-box/CollapseBox'
+import CollapseTrig from '../portfolio/collapse-trig/CollapseTrig'
+
+type OffsetType = {
+  top: number
+  left: number
+  width: number
+}
 
 function Portfoilo() {
+  const [seletedCardIdx, setSelectedCardIdx] = useState<number>()
+  const [offset, setOffset] = useState<OffsetType>()
+
+  const [open, setOpen] = useState<boolean>(false)
+  const [currentCard, setCurrentCard] = useState<PortfolioContent>()
+
+  const onClickCard = (data: PortfolioContent, idx: number) => {
+    const div = document.getElementById(`div${idx}`)
+
+    if (seletedCardIdx === idx) {
+      setOpen(false)
+      setSelectedCardIdx(undefined)
+    } else {
+      setOpen(true)
+      setSelectedCardIdx(idx)
+    }
+
+    setCurrentCard(data)
+
+    setTimeout(() => {
+      setOffset({
+        top: div?.offsetTop ?? 0,
+        left: div?.offsetLeft ?? 0,
+        width: div?.offsetWidth ?? 0,
+      })
+    }, 0)
+  }
+
+  const closeCollapse = () => {
+    setOpen(false)
+    setSelectedCardIdx(undefined)
+  }
+
   return (
-    <SectionLayout sectionInfo={portfolioSectionInfo}>
-      <div className='w-full grid grid-cols-4 gap-2'>
-        {portfolioSectionInfo.content.map((data, idx) => (
-          <div
-            className='relative flex justify-center items-center group w-full h-[222px]'
-            key={idx}
-            style={{
-              backgroundImage: `url(${data.thumbnail})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'cetner',
-              backgroundRepeat: 'no-repeat',
-            }}
-          >
+    <div className='w-full relative'>
+      <SectionLayout sectionInfo={portfolioFakeData}>
+        <div className='w-full grid grid-cols-4 gap-2 gap-y-12 relative'>
+          {portfolioFakeData.content.map((data, idx) => (
             <div
-              style={{
-                background: 'rgba(0,0,0,0.7)',
-              }}
-              className='absolute w-0 h-0 flex items-center justify-center text-white overflow-hidden cursor-pointer group-hover:w-full group-hover:h-full'
+              id={`div${idx}`}
+              key={idx}
+              onClick={() => onClickCard(data, idx)}
+              className={`flex flex-col cursor-pointer ${
+                seletedCardIdx === idx ? 'mb-[560px]' : ''
+              }`}
             >
-              <div className='flex flex-col justify-start items-center'>
-                <span className='text-base'>{data.title}</span>
-                <span className='text-sm'>{data.location}</span>
-              </div>
+              <div
+                className='w-full h-[222px]'
+                style={{
+                  backgroundImage: `url(${data.images[data.mainIdx]})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'cetner',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              ></div>
+              <span className='text-xs mt-8 font-bold'>{data.title}</span>
             </div>
-          </div>
-        ))}
-      </div>
-    </SectionLayout>
+          ))}
+        </div>
+      </SectionLayout>
+      <CollapseTrig
+        top={offset ? offset.top + 675 : 0}
+        left={offset ? offset.left + offset.width / 2 + 345 : 0}
+        open={open}
+      />
+      <CollapseBox
+        currentCard={currentCard}
+        top={offset ? offset.top + 690 : 0}
+        height={open ? 550 : 0}
+        closeCollapse={closeCollapse}
+      />
+    </div>
   )
 }
 

@@ -9,12 +9,16 @@ declare interface SectionSevice extends SectionBase {
 }
 
 declare interface SectionPortfolio extends SectionBase {
-  content: {
-    thumbnail: string
-    title: string
-    location: string
-    images: string[]
-  }[]
+  content: PortfolioContent[]
+}
+
+declare type PortfolioContent = {
+  mainIdx: number
+  title: string
+  location: string
+  date: string
+  inquiry: string
+  images: string[]
 }
 
 declare interface SectionMecastage extends SectionBase {
