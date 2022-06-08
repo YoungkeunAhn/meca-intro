@@ -12,8 +12,8 @@ export const navMenu: NavMenu[] = [
   },
   { title: 'about us', sectionId: 'aboutUs' },
   {
-    title: 'works broadcater',
-    sectionId: 'worksBroadcater',
+    title: 'works broadcaster',
+    sectionId: 'worksBroadcaster',
   },
   {
     title: 'works agency',

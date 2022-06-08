@@ -174,7 +174,7 @@ export const mecastageSectionInfo: SectionMecastage = {
 }
 
 export const broadcaterProgramsSectionInfo: SectionWork = {
-  id: 'worksBroadcater',
+  id: 'worksBroadcaster',
   title: 'Broadcater & Programs',
   mainText: `메카스테이지와 함께한 <span class="text-2xl text-[#00A1B4] font-bold">방송사 & 프로그램</span>`,
   content: [],
