@@ -25,3 +25,21 @@ body {
   border-radius: 50%;
   border: #007f8e solid 3px;
 }
+
+.currentMenu span::first-letter {
+  color: #b36fff;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.navCircle {
+  width: 10px;
+  height: 10px;
+  background: white;
+  margin-left: 20px;
+}
+
+.currentMenu .navCircle {
+  height: 50px;
+  background: #b36fff;
+}

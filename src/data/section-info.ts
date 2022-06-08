@@ -1,4 +1,5 @@
 export const serviceSectionInfo: SectionSevice = {
+  id: 'service',
   title: 'Secvices',
   mainText: `아무렇게나 시공하던 무대가,<br/>
     <span class="text-2xl text-[#00A1B4] font-bold">전문가를 만나면 달라집니다</span>`,
@@ -30,6 +31,7 @@ export const serviceSectionInfo: SectionSevice = {
 }
 
 export const portfolioFakeData: SectionPortfolio = {
+  id: '',
   title: 'Portfolio',
   subText: '사용자 중심, 최적의 무대를 설치 시공합니다',
   content: [
@@ -143,6 +145,7 @@ export const portfolioFakeData: SectionPortfolio = {
 }
 
 export const mecastageSectionInfo: SectionMecastage = {
+  id: 'aboutUs',
   title: 'About us',
   mainText: `믿고 함께할 파트너를 찾고 있다면<br/>
   여기 <span class="text-2xl text-[#00A1B4] font-bold">mecastage가 있습니다</span>`,
@@ -171,12 +174,14 @@ export const mecastageSectionInfo: SectionMecastage = {
 }
 
 export const broadcaterProgramsSectionInfo: SectionWork = {
+  id: 'worksBroadcater',
   title: 'Broadcater & Programs',
   mainText: `메카스테이지와 함께한 <span class="text-2xl text-[#00A1B4] font-bold">방송사 & 프로그램</span>`,
   content: [],
 }
 
 export const entertainmentsSectionInfo: SectionWork = {
+  id: 'worksAgency',
   title: 'Entertainments',
   mainText: `메카스테이지와 함께한 <span class="text-2xl text-[#00A1B4] font-bold">기획사</span>`,
   content: [
@@ -200,6 +205,7 @@ export const entertainmentsSectionInfo: SectionWork = {
 }
 
 export const contactSectionInfo: SectionContact = {
+  id: 'contact',
   title: 'Contact',
   mainText: `궁금한건 모두<br/>
   <span class="text-2xl text-[#00A1B4] font-bold">문의남겨주세요</span>`,

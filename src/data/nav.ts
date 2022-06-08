@@ -10,7 +10,7 @@ export const navMenu: NavMenu[] = [
     title: 'portfolio',
     sectionId: 'portfolio',
   },
-  { title: 'about us', sectionId: 'aboutus' },
+  { title: 'about us', sectionId: 'aboutUs' },
   {
     title: 'works broadcater',
     sectionId: 'worksBroadcater',

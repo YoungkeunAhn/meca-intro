@@ -45,7 +45,7 @@ function Portfoilo() {
   }
 
   return (
-    <div className='w-full relative'>
+    <div className='w-full relative' id='portfolio'>
       <SectionLayout sectionInfo={portfolioFakeData}>
         <div className='w-full grid grid-cols-4 gap-2 gap-y-12 relative'>
           {portfolioFakeData.content.map((data, idx) => (

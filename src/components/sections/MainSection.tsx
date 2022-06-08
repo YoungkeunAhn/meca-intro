@@ -32,11 +32,12 @@ function MainSection() {
   }
 
   return (
-    <div
+    <section
+      id='home'
       className='flex flex-col h-screen relative justify-between'
       style={{
         backgroundImage: 'url(main_bg.png)',
-        backgroundSize: '100%',
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
       }}
@@ -145,7 +146,7 @@ function MainSection() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

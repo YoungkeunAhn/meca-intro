@@ -1,4 +1,5 @@
 declare type SectionBase = {
+  id: string
   title: string
   mainText?: string
   subText?: string

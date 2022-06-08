@@ -1,7 +1,7 @@
 import React from 'react'
 import ScrollTopBtn from './common/scroll-top-btn/ScrollTopBtn'
 import Footer from './components/footer/Footer'
-import NavMenu from './components/nav/NavMenu'
+import NavBar from './components/nav/NavBar'
 import AboutUs from './components/sections/AboutUs'
 import BroadcaterPrograms from './components/sections/BroadcaterPrograms'
 import Contact from './components/sections/Contact'
@@ -21,7 +21,7 @@ function App() {
       <Entertainments />
       <Contact />
       <Footer />
-      <NavMenu />
+      <NavBar />
       <ScrollTopBtn />
     </div>
   )
