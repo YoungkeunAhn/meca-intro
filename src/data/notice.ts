@@ -37,7 +37,7 @@ export const noticeFakeData: NoticeData[] = [
           <p>테스트중입니다4</p>`,
   },
   {
-    notice: true,
+    notice: false,
     title: '가나다라마바사아',
     manager: '관리자',
     date: '2022-06-12',
@@ -46,7 +46,7 @@ export const noticeFakeData: NoticeData[] = [
           <p>테스트중입니다5</p>`,
   },
   {
-    notice: true,
+    notice: false,
     title: '가나다라',
     manager: '관리자',
     date: '2022-06-08',
@@ -82,7 +82,7 @@ export const noticeFakeData: NoticeData[] = [
           <p>테스트중입니다9</p>`,
   },
   {
-    notice: true,
+    notice: false,
     title: '가나다라마바사아',
     manager: '관리자',
     date: '2022-06-12',
@@ -91,7 +91,7 @@ export const noticeFakeData: NoticeData[] = [
           <p>테스트중입니다10</p>`,
   },
   {
-    notice: true,
+    notice: false,
     title: '가나다라',
     manager: '관리자',
     date: '2022-06-08',

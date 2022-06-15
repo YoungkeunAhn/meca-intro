@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Scrollspy from 'react-scrollspy'
 import { navMenu } from '../../data/nav'
 import NavCircle from './NavCircle'
@@ -23,7 +24,6 @@ function NavBar() {
       } else {
         setIsBgWhite(false)
       }
-      console.log(isBgWhite)
     }, 300)
   )
 
@@ -31,7 +31,7 @@ function NavBar() {
     <Scrollspy
       items={scrollspyItems}
       currentClassName='currentMenu'
-      className={`fixed top-1/3 right-[100px] flex flex-col items-end space-y-2.5 text-[16px] font-thin ${
+      className={`fixed top-1/3 right-[50px] flex flex-col items-end space-y-2.5 text-[16px] font-thin ${
         isBgWhite ? 'text-black' : 'text-white'
       }`}
       offset={-300}
@@ -51,6 +51,17 @@ function NavBar() {
           <NavCircle />
         </li>
       ))}
+      <Link to='notice'>
+        <li className='flex items-center cursor-pointer font-bold group'>
+          <span
+            style={{ transition: '0.3s' }}
+            className='group-hover:translate-x-2'
+          >
+            notice
+          </span>
+          <NavCircle />
+        </li>
+      </Link>
     </Scrollspy>
   )
 }

@@ -11,7 +11,7 @@ function ModalContent(props: Props) {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className={`flex flex-col bg-white rounded-md ${
+      className={`flex flex-col bg-white rounded-md border shadow-2xl ${
         className ? className : 'w-1/2 h-3/4'
       }`}
     >

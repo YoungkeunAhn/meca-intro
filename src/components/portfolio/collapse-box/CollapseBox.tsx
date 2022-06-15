@@ -29,7 +29,7 @@ function CollapseBox(props: Props) {
       }}
     >
       <button className='absolute top-[24px] right-60' onClick={closeCollapse}>
-        <Close className='w-7 h-7 fill-gray-500' />
+        <Close className='w-7 h-7 fill-gray-500 z-[999]' />
       </button>
       <div className='w-[1200px] m-auto grid grid-cols-2 gap-4 py-4'>
         <img src={mainImage} alt='main' className='w-full' />

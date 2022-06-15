@@ -20,5 +20,4 @@ export const navMenu: NavMenu[] = [
     sectionId: 'worksAgency',
   },
   { title: 'contact', sectionId: 'contact' },
-  { title: 'notice', sectionId: 'notice' },
 ]
