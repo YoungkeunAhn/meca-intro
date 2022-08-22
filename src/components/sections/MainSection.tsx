@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { contactSuccessMsg } from '../../data/msg'
 
 const purple = '#54009D'
@@ -43,6 +44,10 @@ function MainSection() {
     setClose(!close)
   }
 
+  const onReload = () => {
+    window.location.reload()
+  }
+
   return (
     <section
       id='home'
@@ -55,10 +60,11 @@ function MainSection() {
       }}
     >
       <img
+        onClick={onReload}
         src='logo_white.png'
         alt='메카스테이지'
         width='100px'
-        className='object-contain ml-[69px] mt-[46px]'
+        className='object-contain ml-[69px] mt-[46px] cursor-pointer'
       />
 
       <div
