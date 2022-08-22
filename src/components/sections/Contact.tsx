@@ -25,8 +25,6 @@ const initInputs: InputsType = {
   budget: '',
 }
 
-const formData = new FormData()
-
 function Contact() {
   const [inputs, setInputs] = useState<InputsType>(initInputs)
   const [textareaValue, setTextareaValue] = useState<string>('')
@@ -41,11 +39,11 @@ function Contact() {
     setTextareaValue(event.target.value)
   }
 
-  const onChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      formData.append('image', event.target.files[0])
-    }
-  }
+  // const onChangeFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (event.target.files) {
+  //     formData.append('image', event.target.files[0])
+  //   }
+  // }
 
   const onToggleAgreeCheck = () => {
     setAgreeCheck(!agreeCheck)
@@ -75,7 +73,11 @@ function Contact() {
   const onSubmit = async () => {
     try {
       if (valiContact()) {
-        formData.append('data', JSON.stringify(inputs))
+        const formData = new FormData()
+        formData.append(
+          'data',
+          JSON.stringify({ ...inputs, content: textareaValue })
+        )
         const { data } = await axios({
           method: 'POST',
           url: '/api/contact',

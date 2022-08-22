@@ -51,7 +51,7 @@ function NavBar() {
           <NavCircle />
         </li>
       ))}
-      <Link to='notice'>
+      {/* <Link to='notice'>
         <li className='flex items-center cursor-pointer font-bold group'>
           <span
             style={{ transition: '0.3s' }}
@@ -61,7 +61,7 @@ function NavBar() {
           </span>
           <NavCircle />
         </li>
-      </Link>
+      </Link> */}
     </Scrollspy>
   )
 }
