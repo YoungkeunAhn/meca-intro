@@ -8,7 +8,7 @@ import { IsStringNotNull } from '../../validation/IsNullString'
 import TermsModal from '../terms-modal/TermsModal'
 
 type InputsType = {
-  company: string
+  companyName: string
   manager: string
   companyCallNum: string
   phoneNum: string
@@ -17,7 +17,7 @@ type InputsType = {
 }
 
 const initInputs: InputsType = {
-  company: '',
+  companyName: '',
   manager: '',
   companyCallNum: '',
   phoneNum: '',
@@ -53,7 +53,7 @@ function Contact() {
 
   const valiContact = () => {
     if (
-      IsStringNotNull(inputs.company) &&
+      IsStringNotNull(inputs.companyName) &&
       IsStringNotNull(inputs.companyCallNum) &&
       IsStringNotNull(inputs.email) &&
       IsStringNotNull(inputs.phoneNum) &&
@@ -78,7 +78,7 @@ function Contact() {
         formData.append('data', JSON.stringify(inputs))
         const { data } = await axios({
           method: 'POST',
-          url: 'http://adm.imama.kr/imama/api/',
+          url: '/api/contact',
           data: formData,
         })
         console.log(data)
@@ -113,7 +113,7 @@ function Contact() {
               name='companyName'
               className='border-o outline-none rounded-md w-[355px] h-[50px] px-3 hover:bg-[#D1EFF2]'
               onChange={onChangeInputs}
-              value={inputs.company}
+              value={inputs.companyName}
               required
             />
           </div>
@@ -199,7 +199,7 @@ function Contact() {
             />
           </div>
         </div>
-        <div className='flex justify-start w-full'>
+        {/* <div className='flex justify-start w-full'>
           <div className='flex items-start w-full'>
             <label
               htmlFor='imageFile'
@@ -223,7 +223,7 @@ function Contact() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className='flex justify-start w-full'>
           <div className='flex items-center w-full'>
             <label htmlFor='content' className='font-bold w-[160px] text-left'>

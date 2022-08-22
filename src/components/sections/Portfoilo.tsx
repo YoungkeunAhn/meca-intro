@@ -62,7 +62,7 @@ function Portfoilo() {
                 style={{
                   backgroundImage: `url(${data.images[data.mainIdx]})`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'cetner',
+                  backgroundPosition: 'center',
                   backgroundRepeat: 'no-repeat',
                 }}
               ></div>
