@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import { contactSuccessMsg } from '../../data/msg'
 
@@ -22,9 +23,20 @@ function MainSection() {
     setInputs({ ...inputs, [event.target.name]: event.target.value })
   }
 
-  const onSubmit = () => {
-    alert(contactSuccessMsg)
-    setInputs(initInputs)
+  const onSubmit = async () => {
+    try {
+      const formData = new FormData()
+      formData.append('data', JSON.stringify({ ...inputs }))
+      await axios({
+        method: 'POST',
+        url: '/api/simple_contact',
+        data: formData,
+      })
+      alert(contactSuccessMsg)
+      setInputs(initInputs)
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   const onToggleClose = () => {

@@ -78,12 +78,11 @@ function Contact() {
           'data',
           JSON.stringify({ ...inputs, content: textareaValue })
         )
-        const { data } = await axios({
+        await axios({
           method: 'POST',
           url: '/api/contact',
           data: formData,
         })
-        console.log(data)
         alert(contactSuccessMsg)
         setInputs(initInputs)
         setTextareaValue('')
